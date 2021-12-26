@@ -15,48 +15,48 @@ public class HouseTests {
     }
 
     @Test(expected = NullPointerException.class)
-    public void nameIsNull() {
+    public void testNameIsNull() {
         House house = new House(null, 5);
     }
 
     @Test(expected = NullPointerException.class)
-    public void nameIsWhitespace() {
+    public void testNameIsWhitespace() {
         House house = new House("   ", 5);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void capacityIsLessThanZero() {
+    public void testCapacityIsLessThanZero() {
         House house = new House("CatsHouse", -4);
     }
 
     @Test
-    public void getCountShouldReturnCorrectCatsCount() {
+    public void testGetCountShouldReturnCorrectCatsCount() {
         Cat cat = new Cat("Kitty");
         validHouse.addCat(cat);
         assertEquals(1, validHouse.getCount());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void addingCatToFullHouse() {
+    public void testAddingCatToFullHouse() {
         House house = new House("Home", 0);
         Cat cat = new Cat("Kitty");
         house.addCat(cat);
     }
 
     @Test
-    public void successfullyAddedCat() {
+    public void testSuccessfullyAddedCat() {
         Cat cat = new Cat("Kitty");
         validHouse.addCat(cat);
         assertEquals(1, validHouse.getCount());
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void removingNonExistingCat() {
+    public void testRemovingNonExistingCat() {
         validHouse.removeCat("Kitty");
     }
 
     @Test
-    public void successfullyRemovedCat() {
+    public void testSuccessfullyRemovedCat() {
         Cat cat = new Cat("Kitty");
         validHouse.addCat(cat);
         validHouse.removeCat("Kitty");
@@ -64,7 +64,7 @@ public class HouseTests {
     }
 
     @Test
-    public void statisticsShouldReturnCorrectMessage() {
+    public void testStatisticsShouldReturnCorrectMessage() {
         Cat cat = new Cat("Kitty");
         Cat cat1 = new Cat("Miaui");
         validHouse.addCat(cat);
@@ -76,12 +76,12 @@ public class HouseTests {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void sellingNonExistingCat() {
+    public void testSellingNonExistingCat() {
         Cat cat = validHouse.catForSale("Kitty");
     }
 
     @Test
-    public void successfullySoldCat() {
+    public void testSuccessfullySoldCat() {
         Cat cat = new Cat("Kitty");
         validHouse.addCat(cat);
         Cat forSale = validHouse.catForSale("Kitty");
